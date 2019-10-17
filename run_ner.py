@@ -41,6 +41,12 @@ flags.DEFINE_string(
     "The config json file corresponding to the pre-trained BERT model."
 )
 
+flags.DEFINE_string(
+    "file_name", None,
+    "The test fine"
+)
+
+
 flags.DEFINE_string("vocab_file", None,
                     "The vocabulary file that the BERT model was trained on.")
 
@@ -191,7 +197,7 @@ class NerProcessor(DataProcessor):
 
     def get_test_examples(self,data_dir):
         return self._create_example(
-            self._read_data(os.path.join(data_dir, "test.tsv")), "test")
+            self._read_data(os.path.join(data_dir,FLAGS.file_name)), "test")
 
 
     def get_labels(self):
